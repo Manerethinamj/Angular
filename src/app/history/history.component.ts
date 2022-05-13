@@ -22,7 +22,8 @@ this.jsonuserinfo = JSON.parse(this.userinfo);
 console.log(this.jsonuserinfo.email_id);
 this.bookflightserviceService.getbyemailid(this.jsonuserinfo.email_id).subscribe(result => {
   if(result != null){
-    this.emailrow = JSON.parse(result);
+    this.emailrow = JSON.parse(result); 
+    
 }
 });
 }
