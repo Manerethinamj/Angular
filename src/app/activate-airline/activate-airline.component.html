@@ -1,0 +1,32 @@
+<h4>Reactivate deactivated Flight </h4>
+
+
+
+  
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Airline ID</th>
+            <th>AirlineIDCompany</th>
+            <th>AirlineCode</th>
+            <th>AirplanType</th>
+            <th>AirplanBusFare</th>
+            <th>AirplanECOFare</th>
+            <th>MaxSeat</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let outresultrow of outresult">
+            <td>{{ outresultrow.airlineID }}</td>
+            <td>{{ outresultrow.airlineIDCompany }}</td>
+            <td>{{ outresultrow.airlineCode }}</td>
+            <td>{{ outresultrow.airplanType }}</td>
+            <td>{{ outresultrow.airplanBusFare }}</td>
+            <td>{{ outresultrow.airplanECOFare }}</td>
+            <td>{{ outresultrow.maxSeat }}</td>
+            <td><button type="button" class="btn btn-warning float-right" (click) = "onClickactivateairline(outresultrow)">Activate Airline Service</button></td>
+          </tr>
+    </tbody>
+</table>
+

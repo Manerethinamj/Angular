@@ -1,0 +1,78 @@
+<h4>Cancel-flight </h4>
+
+
+<form class="form-signin" (ngSubmit)="onSubmit(signInForm)"  #signInForm="ngForm" >        
+    <label for="textpnr" class="sr-only">PNR Code </label>
+    <input type="text" id="textpnr"  name="pnr_code" placeholder="pnr_code" ngModel
+         required>
+    <button class="btn btn-primary " type="submit">Get Ticket Details</button>   
+</form>  
+<div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+
+<table class="table table-bordered" id="table"   >
+    <thead>
+        <tr>                            
+          <th>PNR Code</th>
+          <th>Traveller Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+                <th>AirlineIDCompany</th>
+                <th>Booking_state</th>
+                <th>OnboardingPlace</th>
+                <th>DistinationPlace</th>
+                <th>OnboardingTime</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor="let outresultrow1 of pnrrows ">
+                <td>{{ outresultrow1.pnr }}</td>
+                    <td>{{ outresultrow1.traveller_name }}</td>
+                    <td>{{ outresultrow1.age }}</td>
+                    <td>{{ outresultrow1.gender }}</td>
+                    <td>{{ outresultrow1.airlineIDCompany }}</td>
+                    <td>{{ outresultrow1.booking_state }}</td>
+                    <td>{{ outresultrow1.onboardingPlace }}</td>
+                    <td>{{ outresultrow1.distinationPlace }}</td>
+                    <td>{{ outresultrow1.onboardingTime }}</td>
+                    
+            
+          </tr>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-warning float-right"  (click) = "cancelFlightticket(outresultrow)" *ngIf = "iscancelled" >Cancel Booking</button>
+<strong> <p *ngIf = "!iscancelled" style="color: yellowgreen;">Ticket has been Cancelled</strong>
+<!--<table class="table table-bordered" id="table"   >
+    <strong><p style="background-color: rgba(243, 89, 97, 0.966);color: white;">Cancelled Ticket</p></strong>
+    <thead>
+        <tr>                            
+          <th>PNR Code</th>
+          <th>Traveller Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+                <th>AirlineIDCompany</th>
+                <th>Booking_state</th>
+
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let outresultrow of outresultrow">
+                <td>{{ outresultrow.pnr }}</td>
+                    <td>{{ outresultrow.traveller_name }}</td>
+                    <td>{{ outresultrow.age }}</td>
+                    <td>{{ outresultrow.gender }}</td>
+                    <td>{{ outresultrow.airlineIDCompany }}</td>
+                    <td>{{ outresultrow.booking_state }}</td>
+
+                    
+            
+          </tr>
+    </tbody>
+</table> -->
+
+
+

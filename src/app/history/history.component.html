@@ -1,0 +1,36 @@
+<h4>history works!</h4>
+
+
+<table class="table table-bordered" id="table"   >
+    <thead>
+        <tr>                            
+          <th>PNR Code</th>
+          <th>Traveller Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+                <th>AirlineIDCompany</th>
+                <th>Booking_state</th>
+                <th>OnboardingPlace</th>
+                <th>DistinationPlace</th>
+                <th>OnboardingTime</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor="let outresultrow1 of emailrow ">
+                <td>{{ outresultrow1.pnr }}</td>
+                    <td>{{ outresultrow1.traveller_name }}</td>
+                    <td>{{ outresultrow1.age }}</td>
+                    <td>{{ outresultrow1.gender }}</td>
+                    <td>{{ outresultrow1.airlineIDCompany }}</td>
+                    <td>{{ outresultrow1.booking_state }}</td>
+                    <td>{{ outresultrow1.onboardingPlace }}</td>
+                    <td>{{ outresultrow1.distinationPlace }}</td>
+                    <td>{{ outresultrow1.onboardingTime }}</td>
+                    
+            
+          </tr>
+    </tbody>
+</table>
+

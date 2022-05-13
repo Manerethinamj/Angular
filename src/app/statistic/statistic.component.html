@@ -1,0 +1,65 @@
+<h4>Manage schedule</h4>
+
+
+<body ng-app >
+    <button type="button" class="btn btn-warning float-right" (click) = "onClickForm()" *ngIf="!showForm" > show Add new schedule
+    </button>        
+    <form class="form-signin" (ngSubmit)="onSubmit(signInForm)"  #signInForm="ngForm" *ngIf="showForm">
+        
+        <label for="inputlogin" class="sr-only">AirlineCode </label>
+        <input type="text" id="inputLogin"  name="airlineCode" placeholder="AirlineCode" ngModel
+            required autofocus>
+
+        <label for="inputlogin" class="sr-only">Onboarding Place: </label>
+        <input type="text" id="inputLogin"  name="onboardingPlace" placeholder="Onboarding TN,TS,GA etc" ngModel
+            required autofocus>
+
+            <label for="inputlogin" class="sr-only">Distination Place: </label>
+            <input type="text" id="inputLogin"  name="distinationPlace" placeholder="Distination TN,TS,GA etc" ngModel
+                required autofocus>
+                <label for="inputlogin" class="sr-only">Onboarding Date : </label>
+                <input type="datetime-local" name="onboardingdate" ngModel
+                required autofocus>
+
+        <button class="btn btn-primary " type="submit">Schedule Airline</button>
+
+       <button type="button" class="btn btn-warning float-right" (click) = "onClickbuttinForm()" *ngIf="showForm" >Hide Add new schedule
+    </button> 
+    </form>  
+ </body>
+
+
+<a></a>
+
+<button type="button" class="btn btn-warning float-right" (click) = "refresh()">Refresh</button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Schedule ID</th>
+            <th>Airline Company</th>
+            <th>AirlineCode</th>
+            <th>AirlineType</th>
+            <th>Onboarding Place</th>
+            <th>Distination Place</th>
+            <th>Onboarding Time</th>
+            <th>Distination Time</th>
+            <th>Cancel schedule</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let outresultrow of outresult">
+          <td>{{ outresultrow.invent_ID }}</td>
+          <td>{{ outresultrow.airlineIDCompany }}</td>
+          <td>{{ outresultrow.airlineCode }}</td>
+          <td>{{ outresultrow.airplanType }}</td>
+          <td>{{ outresultrow.onboardingPlace }}</td>
+          <td>{{ outresultrow.distinationPlace }}</td>
+          <td>{{ outresultrow.onboardingTime }}</td>
+          <td>{{ outresultrow.distinationTime }}</td>
+          <td><button class="btn btn-warning float-right" (click) = "onClickCancelSchedule(outresultrow)">Cancel Schedule</button></td>
+
+        </tr>
+      </tbody>
+</table>
+

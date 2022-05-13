@@ -1,0 +1,204 @@
+<h4>Book Ticket!</h4>
+
+
+<form class="form-signin big" (ngSubmit)="onSubmit(signInForm)"  #signInForm="ngForm" *ngIf="showForm">
+        
+    <label for="inputlogin" class="sr-only">OnboardingPlace: </label>
+    <input type="text" id="inputLogin"  name="onboardingPlace" placeholder="TN,TS,GA etc" ngModel
+        required autofocus>    
+
+
+        <label for="inputlogin" class="sr-only">DistinationPlace  :</label>
+        <input type="text" id="inputLogin"   name="distinationPlace" placeholder="TN,TS,GA etc" ngModel
+            required autofocus>
+            
+            <button class="btn btn-primary " type="submit">Search Flight</button>
+</form>
+
+<div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+<button class="btn btn-warning " type="button" (click) = "resetdata()" >Go Home and leave Booking</button>
+
+<table class="table table-bordered"  *ngIf="showtable" >
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Airline Company</th>
+            <th>AirlineCode</th>
+            <th>AirplanType</th>
+            <th>AirplanECOFare</th>
+            <th>onboardingPlace</th>
+            <th>DistinationPlace</th>
+            <th>OnboardingTime</th>
+            <th>DistinationTime</th>
+            <th>Book</th>
+
+        </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor="let outresultrow of outresult">
+            <td>{{ outresultrow.invent_ID }}</td>
+            <td>{{ outresultrow.airlineIDCompany }}</td>
+            <td>{{ outresultrow.airlineCode }}</td>
+            <td>{{ outresultrow.airplanType }}</td>
+            <td>{{ outresultrow.airplanECOFare }}</td>
+            <td>{{ outresultrow.onboardingPlace }}</td>
+            <td>{{ outresultrow.distinationPlace }}</td>
+            <td>{{ outresultrow.onboardingTime }}</td>
+            <td>{{ outresultrow.distinationTime }}</td>
+            <td><button type="button" class="btn btn-warning float-right" (click) = "bookticket(outresultrow)">BookTicket</button></td>
+          </tr>
+    </tbody>
+</table>
+<table class="table table-bordered"  *ngIf="!showtable" >
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Airline Company</th>
+            <th>AirlineCode</th>
+            <th>AirplanType</th>
+            <th>AirplanECOFare</th>
+            <th>onboardingPlace</th>
+            <th>DistinationPlace</th>
+            <th>OnboardingTime</th>
+            <th>DistinationTime</th>           
+
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+            <td>{{ bookedrowval.invent_ID }}</td>
+            <td>{{ bookedrowval.airlineIDCompany }}</td>
+            <td>{{ bookedrowval.airlineCode }}</td>
+            <td>{{ bookedrowval.airplanType }}</td>
+            <td>{{ bookedrowval.airplanECOFare }}</td>
+            <td>{{ bookedrowval.onboardingPlace }}</td>
+            <td>{{ bookedrowval.distinationPlace }}</td>
+            <td>{{ bookedrowval.onboardingTime }}</td>
+            <td>{{ bookedrowval.distinationTime }}</td>
+            
+          </tr>
+    </tbody>
+</table>
+
+<div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+
+
+
+
+     <div  *ngIf="ticketbool">
+                <p >
+                    <label  class="sr-only">Name :</label>
+                    <input type="text" id="travelername" >
+                    <label  class="sr-only">Age :</label>
+                    <input type="number" id="age" name="samplenamename">
+                    <label  class="sr-only">GENDER :</label>
+                    <select id="gender" name = "dropdown" class="dropdown" >
+                      <option value = "MALE" selected>MALE</option>
+                      <option value = "FEMALE">FEMALE</option>
+                      <option value = "OTHERS">OTHERS</option>
+                      </select>
+                      <label  class="sr-only">seat :</label>
+                      <input type="text" id="seat" (blur)="blurEvent($event)" >
+                      <button type="button" class="btn btn-primary " (click)="donothing()" >add</button>
+                </p>
+                <table class="table table-bordered"  >
+                    <thead>
+                        <tr>                            
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Seat</th>
+                            <th>Amount</th>
+              
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor="let outresultrow of jsonplank">
+                            <td>{{ outresultrow.name }}</td>
+                            <td>{{ outresultrow.age }}</td>
+                            <td>{{ outresultrow.gender }}</td>
+                            <td>{{ outresultrow.seatinformation }}</td>
+                            <td>{{ outresultrow.amount}}</td>
+                            
+                          </tr>
+                    </tbody>
+                </table>
+                <div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+
+                <label  class="sr-only">Meal :</label>
+                <select id="Meal" name = "dropdown" class="dropdown" >
+                    <option value = "VEG" selected>VEG</option>
+                    <option value = "NON-VEG">NON-VEG</option></select>
+                    <div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+                
+            
+
+            <h6>Total Amount  : $ {{GrandTotal}}</h6>
+            
+            
+            <a>
+            <label  class="sr-only">Discount :</label>
+            <input type="text" id="Discount" (blur)="bluredEvent($event)" >
+        </a>
+        <strong><label class="sr-only" style="color: rgb(25, 138, 25);" *ngIf ="isvaliddiscount">Valid Discount code :: Discount Amount :: {{ this.discountamount }}</label></strong>
+        <div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+            
+                <button class="btn btn-primary " type="button" (click) = "confirmbookticket()" *ngIf="!isticketbooked">Book Ticket</button>
+            </div>
+            <strong><label class="sr-only" style="color: rgb(25, 138, 25);" *ngIf ="isticketbooked">Ticket Booked :: {{ this.isticketbooked }}</label></strong>
+            
+            <div style="background-color: white;height: 0.4cm; width: 24cm;padding-top: 3mm;"></div>
+            <button class="btn btn-warning " type="button" (click) = "fetchconfirmedticket()" >Show Ticket</button>
+            
+            
+            
+            <div id="ticketdownload">
+
+
+                <table class="table table-bordered" id="table"  *ngIf = "isticketvisable" >
+                    <thead>
+                        <tr>                            
+                          <th>PNR Code</th>
+                          <th>Traveller Name</th>
+                          <th>Age</th>
+                          <th>Gender</th>
+                                <th>AirlineIDCompany</th>
+                                <th>AirlineCode</th>
+                                <th>Email_id</th>
+                                <th>Booking_state</th>
+                                <th>OnboardingPlace</th>
+                                <th>DistinationPlace</th>
+                                <th>Seat_id</th>
+                                <th>OnboardingTime</th>
+                                <th>DistinationTime</th>
+                                <th>Meal_type</th>
+                            
+              
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor="let outresultrow of pnrrows">
+                                <td>{{ outresultrow.pnr }}</td>
+                                    <td>{{ outresultrow.traveller_name }}</td>
+                                    <td>{{ outresultrow.age }}</td>
+                                    <td>{{ outresultrow.gender }}</td>
+                                    <td>{{ outresultrow.airlineIDCompany }}</td>
+                                    <td>{{ outresultrow.airlineCode }}</td>
+                                    <td>{{ outresultrow.email_id }}</td>
+                                    <td>{{ outresultrow.booking_state }}</td>
+                                    <td>{{ outresultrow.onboardingPlace }}</td>
+                                    <td>{{ outresultrow.distinationPlace }}</td>
+                                    <td>{{ outresultrow.seat_id }}</td>
+                                    <td>{{ outresultrow.onboardingTime }}</td>
+                                    <td>{{ outresultrow.distinationTime }}</td>
+                                    <td>{{ outresultrow.meal_type }}</td>
+                                
+                            
+                          </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            
+<button  class="btn btn-warning " type="button" (click) = "captureScreen()" >Download</button>        

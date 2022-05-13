@@ -1,0 +1,47 @@
+<h4>Add - Discount</h4>
+<body ng-app >
+    <button type="button" class="btn btn-warning float-right" (click) = "onClickForm()" *ngIf="!showForm" > show Add new Discount
+    </button>        
+    <form class="form-signin" (ngSubmit)="onSubmit(signInForm)"  #signInForm="ngForm" *ngIf="showForm">
+        
+        <label for="inputlogin" class="sr-only">Discount_Code </label>
+        <input type="text" id="inputLogin"  name="DiscountCode" placeholder="ex:axds12" ngModel
+            required autofocus>
+
+
+            <label for="inputlogin" class="sr-only">Discount_Amount: </label>
+            <input type="number" id="inputLogin"  name="DiscountAmount" placeholder="Discount_Amount: 10,5 etc" ngModel
+                required autofocus>
+
+
+        <button class="btn btn-primary " type="submit">Add discount</button>
+
+       <button type="button" class="btn btn-warning float-right" (click) = "onClickbuttinForm()" *ngIf="showForm" >Hide Add Discount
+    </button> 
+    </form>  
+ </body>
+
+ <button type="button" class="btn btn-warning float-right" (click) = "refresh()">Refresh</button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Discount_ID</th>
+            <th>Discount_startDate</th>
+            <th>Discount_EndDate</th>
+            <th>Discount_Amount</th>
+            <th>Discount_Code</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let outresultrow of outresult">
+            <td>{{ outresultrow.discount_ID }}</td>
+            <td>{{ outresultrow.discount_startDate }}</td>
+            <td>{{ outresultrow.discount_EndDate }}</td>
+            <td>{{ outresultrow.discount_Amount }}</td>
+            <td>{{ outresultrow.discount_Code }}</td>
+             
+          </tr>
+    </tbody>
+</table>
+
